@@ -7,11 +7,7 @@ var numPeriod = 0;
 
 $(document).ready(function() {
   $('#clear').on('click', function () {
-    num1 = null;
-    num2 = null;
-    operator = null;
-    total = 0;
-    numPeriod = 0;
+    reset()
     displayScreen(total);
   });
 
@@ -41,7 +37,7 @@ $(document).ready(function() {
       operator = e.target.id;
       num2 = null;
       displayScreen(num1 + operator);
-      console.log({num1, operator, num2, total})
+      // console.log({num1, operator, num2, total})
     }
   });
 
@@ -50,8 +46,7 @@ $(document).ready(function() {
       if (!operator) {
         total = num1;
         displayScreen(num1);
-        console.log({num1, operator, num2, total})
-      } else if (!num2) {
+        // console.log({num1, operator, num2, total})
         return;
       }
     }
@@ -92,20 +87,28 @@ function handleDigit(e) {
   if (num1 == null) {
     num1 = e.target.value;
     displayScreen(num1);
-    console.log({num1, operator, num2, total})
+    // console.log({num1, operator, num2, total})
   } else if (operator == null) {
       num1 += e.target.value;
       displayScreen(num1);
-      console.log({num1, operator, num2, total})
+      // console.log({num1, operator, num2, total})
   } else {
     if (num2 == null) {
       num2 = e.target.value;
       displayScreen(num1 + operator + num2);
-      console.log({num1, operator, num2, total})
+      // console.log({num1, operator, num2, total})
     } else {
       num2 += e.target.value;
       displayScreen(num1 + operator + num2);
-      console.log({num1, operator, num2, total})
+      // console.log({num1, operator, num2, total})
     }
   }
+}
+
+function reset() {
+  num1 = null;
+  num2 = null;
+  operator = null;
+  total = 0;
+  numPeriod = 0;
 }
